@@ -1,0 +1,77 @@
+\documentclass[%
+  oneside
+ ,11pt
+ ,a4paper
+ ,pagesize
+ ,headinclude        
+ ,headsepline
+%,BCOR20mm      % Adds 20 mm for binding 
+]{scrbook}
+
+\usepackage{scrpage2}
+\usepackage{lipsum}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{wasysym}
+\usepackage{pifont}
+\usepackage{marvosym}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage[topthumbmargin={4cm},width=2cm,minheight={3cm},distance={0.5cm}]{thumbs}
+\usepackage{ragged2e}
+\usepackage{etoolbox}
+\usepackage{subfigure}
+\usepackage{wrapfig}
+\AtBeginEnvironment{multicols}{\RaggedRight}
+
+\definecolor{titlepagecolor}{cmyk}{1,.60,0,.40}
+\definecolor{namecolor}{cmyk}{1,.50,0,.10}
+
+\newcommand\titlebar{%
+\tikz[baseline,trim left=2.5cm,trim right=3cm] {
+    \fill [black!10] (2.5cm,-1ex) rectangle (\textwidth+3.0cm,2.5ex);
+    \node [
+        fill=titlepagecolor,
+        anchor= base east,
+        rectangle,
+        minimum height=3.5ex] at (3cm,0) {\color{white}
+        \textbf{\arabic{chapter}.\thesection.}
+    };
+}%
+}
+\titleformat{\section}{\large}{\titlebar}{0.35cm}{}
+\renewcommand*{\thesection}{\arabic{section}}
+
+\pagestyle{scrheadings}
+\ihead[]{\textbf{\textsf{OpenSAM}} user manual}
+
+\begin{document}
+\pagenumbering{arabic}
+
+\input{Frontpage.tex}
+
+\addthumbsoverviewtocontents{section}{Thumb marks overview}
+\thumbsoverview{version 1.0}
+
+\input{Disclaimers.tex}
+
+\input{Introduction.tex}
+
+\input{Diagram.tex}
+
+\input{Parts.tex}
+
+\input{Assembly.tex}
+
+\input{Setup.tex}
+
+\end{document}
